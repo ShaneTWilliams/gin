@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Gin Rummy Ledger — Dad vs Shane</title>
+<meta name="description" content="A father-and-son gin rummy scoreboard: lifetime record, stats, and visualizations." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+
+<div class="felt-glow"></div>
+
+<header class="site-header">
+  <div class="suits" aria-hidden="true"><span class="s-spade">♠</span><span class="s-heart">♥</span><span class="s-diamond">♦</span><span class="s-club">♣</span></div>
+  <h1>Gin Rummy Leaderboard</h1>
+  <p class="subtitle">A running tally of every hand between <strong>Dad</strong> &amp; <strong>Shane</strong></p>
+  <p class="span" id="span-line"></p>
+</header>
+
+<main>
+
+  <!-- HEAD TO HEAD -->
+  <section class="scoreboard" aria-label="Head to head record">
+    <article class="player-card" id="card-T">
+      <h2 class="player-name">Dad</h2>
+      <div class="player-wins"><span class="big" data-count id="wins-T">0</span><span class="lbl">wins</span></div>
+      <div class="player-pct" id="pct-T"></div>
+    </article>
+
+    <div class="vs">
+      <div class="vs-circle">VS</div>
+      <div class="leader-flag" id="leader-flag"></div>
+    </div>
+
+    <article class="player-card" id="card-S">
+      <h2 class="player-name">Shane</h2>
+      <div class="player-wins"><span class="big" data-count id="wins-S">0</span><span class="lbl">wins</span></div>
+      <div class="player-pct" id="pct-S"></div>
+    </article>
+  </section>
+
+  <div class="winbar-wrap">
+    <div class="winbar"><div class="winbar-fill" id="winbar-fill"></div></div>
+    <div class="winbar-legend">
+      <span><i class="dot dot-T"></i> Dad</span>
+      <span id="winbar-total"></span>
+      <span><i class="dot dot-S"></i> Shane</span>
+    </div>
+  </div>
+
+  <!-- BY THE NUMBERS -->
+  <section class="panel">
+    <div class="panel-head"><h3>By the numbers</h3><p>Every stat, drawn from the full game log</p></div>
+    <div id="stats-groups"></div>
+  </section>
+
+  <!-- CHARTS -->
+  <section class="panel">
+    <div class="panel-head"><h3>Every game</h3><p>Final scores side by side, in order from the first game to the latest</p></div>
+    <div class="chart-box tall"><canvas id="chart-games"></canvas></div>
+  </section>
+
+  <section class="panel">
+    <div class="panel-head"><h3>Winning-score distribution</h3><p>Every circled final score on the sheet</p></div>
+    <div class="chart-box"><canvas id="chart-scores"></canvas></div>
+  </section>
+
+  <section class="panel">
+    <div class="panel-head"><h3>Margins of victory</h3><p>Games where both final scores were recorded, sorted by margin</p></div>
+    <div class="chart-box tall"><canvas id="chart-margins"></canvas></div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section class="panel">
+    <div class="panel-head"><h3>Timeline</h3><p>Notable periods</p></div>
+    <ol class="timeline" id="timeline"></ol>
+  </section>
+
+  <!-- GAME LOG -->
+  <section class="panel">
+    <div class="panel-head"><h3>Game log</h3><p>Every game transcribed from the sheet, newest first</p></div>
+    <div class="table-wrap">
+      <table class="log" id="log-table">
+        <thead><tr><th>Date</th><th>Winner</th><th class="num">Score</th><th class="num">vs</th><th class="num">Margin</th><th>Note</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <p class="data-note">
+    Scores were transcribed by hand from the photo and may contain small errors.
+    The lifetime record comes straight from the tally box on the sheet.
+    To correct or add games, edit <code>assets/data.js</code>.
+  </p>
+
+</main>
+
+<footer class="site-footer">
+  <div class="suits small" aria-hidden="true">♠ ♥ ♦ ♣</div>
+  <p>Made with love for the long game.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
