@@ -144,7 +144,7 @@ function renderStats() {
     { title: "Hands", suit: "♣", items: [
       { val: biggestHand, lbl: "Most points in one hand" },
       { val: smallestHand, lbl: "Fewest points in one hand" },
-      { val: longestGame, lbl: "Longest game (hands)" },
+      { val: longestGame, lbl: "Longest game" },
       { val: handsRecorded, lbl: "Hands recorded" },
     ]},
   ];
@@ -193,7 +193,7 @@ function gamesChart() {
         },
       },
       scales: {
-        x: { grid: { display: false }, ticks: { autoSkip: true, maxRotation: 0, font: { size: 10 } }, title: { display: true, text: "Game (oldest → newest)", color: "#9fb3a8" } },
+        x: { grid: { display: false }, ticks: { autoSkip: true, maxRotation: 0, font: { size: 10 } }, title: { display: true, text: "Game", color: "#9fb3a8" } },
         y: { beginAtZero: true, title: { display: true, text: "Final score", color: "#9fb3a8" } },
       },
     },
